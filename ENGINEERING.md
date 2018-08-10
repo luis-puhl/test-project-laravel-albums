@@ -2,6 +2,44 @@ ENGINEERING
 ===========
 This is an stack file, append here at the top.
 
+# Sprint 1: Starting the Laravel project
+
+```sh
+git submodule add https://github.com/Laradock/laradock.git
+cp laradock/env-example .env
+ln -rsf .env laradock
+```
+
+Change the `.env` file:
+```sh
+# from
+APP_CODE_PATH_HOST=../
+DATA_PATH_HOST=~/.laradock/data
+# to
+APPLICATION=../laravel-albums/
+APP_CODE_PATH_HOST=../laravel-albums/
+DATA_PATH_HOST=../data
+```
+
+Back to the terminal.
+```sh
+cd laradock
+docker-compose up nginx mysql workspace
+# in a new terminal, since I like to keep an eye on the output log
+docker-compose exec workspace bash
+# this chages context to the _worksapce_ service container
+composer create-project --prefer-dist laravel/laravel laravel-albums
+
+# back to the host
+exit
+# back to the root project
+cd ..
+# Ajust recently created laravel project (laravel-albums)
+sudo chown -R puhl:puhl . && sudo chmod -R g+rw .
+```
+
+![check the browser](engineering/localhost_2018-08-10_17-35-25.png)
+
 # Sprint 0: Understanding the Problem
 
 ## 1. Extracting the text from pdf with `GostScritp`
