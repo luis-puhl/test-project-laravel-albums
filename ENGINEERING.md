@@ -2,6 +2,17 @@ ENGINEERING
 ===========
 This is an stack file, append here at the top.
 
+# Sprint 2: Narrowing Docker config and make database work
+
+After some pain, finally a `docker-compose.yml` and aditional config files are working.
+
+
+To run the project:
+```sh
+docker-compose up -d
+dc exec --user=laradock workspace php artisan migrate
+```
+
 # Sprint 1: Starting the Laravel project
 
 ```sh
@@ -38,13 +49,18 @@ exit
 cd ..
 # Ajust recently created laravel project (laravel-albums)
 sudo chown -R puhl:puhl . && sudo chmod -R g+rw .
+
+# Copy content of `laravel-albums/.env.example` to the top of `.env`
+# This way only one Enviroment will be used across all apps
+ln `pwd`/.env `pwd`/laravel-albums/.env
+
 ```
 
 ![check the browser](engineering/localhost_2018-08-10_17-35-25.png)
 
 ```sh
 dc -f laradock/docker-compose.yml exec --user=laradock workspace php artisan make:auth
-dc -f laradock/docker-compose.yml exec --user=laradock workspace php artisan  make:model --all Artist
+dc -f laradock/docker-compose.yml exec --user=laradock workspace php artisan make:model --all Artist
 # --all Generate a migration, factory, and resource controller for the model
 ```
 
