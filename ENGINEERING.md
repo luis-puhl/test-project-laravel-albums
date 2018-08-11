@@ -15,10 +15,12 @@ Change the `.env` file:
 # from
 APP_CODE_PATH_HOST=../
 DATA_PATH_HOST=~/.laradock/data
+WORKSPACE_TIMEZONE=UTC
 # to
 APPLICATION=../laravel-albums/
 APP_CODE_PATH_HOST=../laravel-albums/
 DATA_PATH_HOST=../data
+WORKSPACE_TIMEZONE=BR
 ```
 
 Back to the terminal.
@@ -39,6 +41,12 @@ sudo chown -R puhl:puhl . && sudo chmod -R g+rw .
 ```
 
 ![check the browser](engineering/localhost_2018-08-10_17-35-25.png)
+
+```sh
+php artian make:auth
+php artian make:controller --all Artist
+# --all Generate a migration, factory, and resource controller for the model
+```
 
 # Sprint 0: Understanding the Problem
 
