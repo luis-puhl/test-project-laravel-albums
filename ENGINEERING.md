@@ -43,7 +43,7 @@ sudo chown -R puhl:puhl . && sudo chmod -R g+rw .
 ![check the browser](engineering/localhost_2018-08-10_17-35-25.png)
 
 ```sh
-php artian make:auth
+dc -f laradock/docker-compose.yml exec --user=laradock workspace php artisan make:auth
 php artian make:controller --all Artist
 # --all Generate a migration, factory, and resource controller for the model
 ```
