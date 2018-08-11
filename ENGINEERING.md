@@ -44,7 +44,7 @@ sudo chown -R puhl:puhl . && sudo chmod -R g+rw .
 
 ```sh
 dc -f laradock/docker-compose.yml exec --user=laradock workspace php artisan make:auth
-php artian make:controller --all Artist
+dc -f laradock/docker-compose.yml exec --user=laradock workspace php artisan  make:model --all Artist
 # --all Generate a migration, factory, and resource controller for the model
 ```
 
