@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Artist;
+use View;
 use Illuminate\Http\Request;
+use App\Services\ArtistService;
 
 class ArtistController extends Controller
 {
@@ -12,9 +13,10 @@ class ArtistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ArtistService $service)
     {
-        //
+        $artists = $service->index();
+        return View::make('artists.index')->with('artists', $artists);
     }
 
     /**
