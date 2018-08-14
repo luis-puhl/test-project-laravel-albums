@@ -88,13 +88,13 @@ class StoreFilesMiddleware
                     return false;
                 }
             )->filter()->all();
-            // filtra os files sem erro de extenção
+            // filters files without extension errors
             $files = $files->filter(function (UploadedFileWrapper $file) use ($allowedFileExtensions) {
                 return $file->isExtensionValid($allowedFileExtensions);
             });
         }
 
-        // armazena files válidos
+        // stores valid files
         foreach ($files as $key => $file) {
             try {
                 $file->store($disk);

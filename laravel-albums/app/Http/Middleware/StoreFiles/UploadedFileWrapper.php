@@ -6,7 +6,7 @@ use Illuminate\Http\UploadedFile as IlluminateUploadedFile;
 use Illuminate\Support\Facades\Storage;
 
 class UploadedFileWrapper {
-    public $Extension, $storedPath, $originalName, $url;
+    public $extension, $storedPath, $originalName, $url;
 
     // IlluminateUploadedFile
     public $uploadedFile;
@@ -19,16 +19,16 @@ class UploadedFileWrapper {
 
     public function getExtension()
     {
-        if (!$this->Extension) {
-            $this->Extension = $this->uploadedFile->getClientOriginalExtension();
+        if (!$this->extension) {
+            $this->extension = $this->uploadedFile->getClientOriginalExtension();
         }
-        if (!$this->Extension) {
-            $this->Extension = $this->uploadedFile->Extension();
+        if (!$this->extension) {
+            $this->extension = $this->uploadedFile->extension();
         }
-        if (!$this->Extension) {
-            $this->Extension = $this->uploadedFile->guessExtension();
+        if (!$this->extension) {
+            $this->extension = $this->uploadedFile->guessExtension();
         }
-        return $this->Extension;
+        return $this->extension;
     }
 
     public function isExtensionValid(array $allowedExtensions)
