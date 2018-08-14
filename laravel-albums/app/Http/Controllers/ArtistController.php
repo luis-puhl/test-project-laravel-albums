@@ -26,7 +26,7 @@ class ArtistController extends Controller
      */
     public function create()
     {
-        //
+        return View::make('artists.form');
     }
 
     /**
@@ -37,7 +37,8 @@ class ArtistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $artist = $service->create($request->all());
+        return View::make('artists.view')->with('artist', $artist);
     }
 
     /**
@@ -46,9 +47,10 @@ class ArtistController extends Controller
      * @param  \App\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function show(Artist $artist)
+    public function show(Artist $artist, $id)
     {
-        //
+        $artist = $artist ?? $service->find($id);
+        return View::make('artists.view')->with('artist', $artist);
     }
 
     /**
@@ -57,9 +59,10 @@ class ArtistController extends Controller
      * @param  \App\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function edit(Artist $artist)
+    public function edit(Artist $artist, $id)
     {
-        //
+        $artist = $artist ?? $service->find($id);
+        return View::make('artists.form')->with('artist', $artist);
     }
 
     /**
@@ -69,9 +72,10 @@ class ArtistController extends Controller
      * @param  \App\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Artist $artist)
+    public function update(Request $request, Artist $artist, $id)
     {
-        //
+        $artist = $service->update($request->all(), $id);
+        return View::make('artists.view')->with('artist', $artist);
     }
 
     /**
@@ -80,8 +84,9 @@ class ArtistController extends Controller
      * @param  \App\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Artist $artist)
+    public function destroy(Artist $artist, $id)
     {
-        //
+        $service->destroy($id);
+        return $this->index();
     }
 }

@@ -19,9 +19,9 @@ class CreateArtistsTable extends Migration
             $table->softDeletesTz();
 
             $table->string('name');
-            $table->string('image');
-            $table->string('genre');
-            $table->text('description');
+            $table->string('image')->nullable();
+            $table->string('genre')->nullable();
+            $table->text('description')->nullable();
         });
     }
 
