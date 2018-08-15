@@ -8,6 +8,6 @@ $factory->define(Artist::class, function (Faker $faker) {
         'name' => $faker->name,
         'image' => 'http://via.placeholder.com/150x150',
         'genre' => $faker->randomElement(['rock', 'pop', 'country', 'folk', null]),
-        'description' => $faker->text,
+        'description' => $faker->paragraph,
     ];
 });
