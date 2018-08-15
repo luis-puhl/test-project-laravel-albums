@@ -14,9 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->singleton(ArtistService::class, function ($app) {
-            return new ArtistService();
-        });
+        //
     }
 
     /**
