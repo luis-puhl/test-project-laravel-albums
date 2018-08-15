@@ -20,3 +20,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('artist', 'ArtistController');
+
+Route::get('/admin', function () {
+    return view('adminmd');
+});
+
+Route::get('/boot', function () {
+    return view('bootstrap.sample');
+});
