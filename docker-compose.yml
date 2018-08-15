@@ -18,9 +18,9 @@ services:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
       networks:
         - backend
+      user:  $UID:$GID
       working_dir: /var/www
-      user: node
-      tty: true
+      command: npm run production
     fpm-alpine:
       image: php:fpm-alpine
       volumes:
